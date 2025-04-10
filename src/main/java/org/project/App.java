@@ -3,39 +3,30 @@ package org.project;
 import org.system.controller.SystemController;
 import org.wiseSaying.controller.WiseSayingController;
 
-import java.util.Scanner;
-
 public class App {
-    private Scanner sc;
 
-    App(Scanner sc) {
-        this.sc = sc;
-    }
+    App() {}
 
     public void run() {
 
         SystemController systemController = new SystemController();
-        WiseSayingController wiseSayingController = new WiseSayingController(sc);
+        WiseSayingController wiseSayingController = new WiseSayingController();
 
         System.out.println("== Motivation 앱 실행 ==");
 
-
-        while (true){
+        while (true) {
             // 좌우 공백 제거: trim()
             System.out.print("명령어) ");
-            String cmd = sc.nextLine().trim();
+            String cmd = Container.getScanner().nextLine().trim();
 
-            if (cmd.equals("add")){
-               wiseSayingController.add();
-            }
-            else if (cmd.equals("list")){
+            if (cmd.equals("add")) {
+                wiseSayingController.add();
+            } else if (cmd.equals("list")) {
                 wiseSayingController.list();
-            }
-            else if (cmd.equals("exit")){
+            } else if (cmd.equals("exit")) {
                 systemController.exit();
                 break;
-            }
-            else{
+            } else {
                 System.out.println("존대하지 않는 명령어입니다.");
             }
         }
