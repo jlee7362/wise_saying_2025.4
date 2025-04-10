@@ -1,4 +1,6 @@
-package org.example;
+package org.project;
+
+import org.wiseSaying.entity.WiseSaying;
 
 import java.util.*;
 
@@ -39,7 +41,6 @@ public class App {
                 else{
                     System.out.println("번호 / 인물 / 명언");
                     System.out.println("=".repeat(30));
-//                    Collections.sort(wiseSayingList);
                     Collections.reverse(wiseSayingList);
                     for(WiseSaying temp : wiseSayingList){
                         System.out.printf("%d      %s     %s\n", temp.getId(),temp.getName(),temp.getContent());
