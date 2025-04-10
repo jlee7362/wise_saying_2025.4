@@ -23,7 +23,6 @@ public class WiseSayingController {
         wiseSayingList.add(temp);
         lastId++;
     }
-
     public void list() {
         if (wiseSayingList.size() == 0) {
             System.out.println("등록된 명언이 없습니다.");
@@ -35,5 +34,9 @@ public class WiseSayingController {
                 System.out.printf("%d      %s     %s\n", temp.getId(), temp.getName(), temp.getContent());
             }
         }
+    }
+    public void remove(){
+
+
     }
 }
