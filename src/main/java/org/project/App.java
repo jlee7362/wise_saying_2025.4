@@ -2,17 +2,10 @@ package org.project;
 
 import org.system.controller.SystemController;
 import org.wiseSaying.controller.WiseSayingController;
-import org.wiseSaying.entity.WiseSaying;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class App {
 
-    App() {
-    }
-
+    App() {}
     public void run() {
 
         SystemController systemController = new SystemController();
@@ -29,7 +22,7 @@ public class App {
                 Rq rq = new Rq(cmd);
                 System.out.println(rq.getActionCode());
                 System.out.println(rq.getParams());
-                  wiseSayingController.remove();
+                wiseSayingController.remove();
             } else if (cmd.equals("add")) {
                 wiseSayingController.add();
             } else if (cmd.equals("list")) {

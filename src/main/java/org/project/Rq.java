@@ -1,6 +1,5 @@
 package org.project;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +8,7 @@ public class Rq {
     private String actionCode;
     private Map<String, String> params;
 
-    public Rq(String cmd){
+    public Rq(String cmd) {
         // parsing start
         String[] cmdBits = cmd.split("\\?", 2);
 
@@ -27,11 +26,13 @@ public class Rq {
 //        System.out.println("value : " + value);
         // parsing end
     }
-    public String getActionCode(){
+
+    public String getActionCode() {
 
         return actionCode;
     }
-    public Map<String,String>getParams(){
+
+    public Map<String, String> getParams() {
         return params;
     }
 }
