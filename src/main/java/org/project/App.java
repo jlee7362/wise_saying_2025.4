@@ -26,28 +26,10 @@ public class App {
             String cmd = Container.getScanner().nextLine().trim();
 
             if (cmd.startsWith("delete")) {
-                // parsing start
-                String[] cmdBits = cmd.split("\\?", 2);
-//                 for (String i : cmdBits){
-//                     System.out.println(i);
-//                 }
-                String actionCode = cmdBits[0];
-
-                Map<String, String> params = new HashMap<>();
-
-                String[] paramBits = cmdBits[1].split("=", 2);
-
-                String key = paramBits[0];
-                String value = paramBits[1];
-                params.put(key, value);
-                System.out.println(Arrays.toString(cmdBits));
-                System.out.println("actioncode : "+actionCode);
-                System.out.println("key : " + key);
-                System.out.println("value : " + value);
-                // parsing end
-                wiseSayingController.remove();
-
-
+                Rq rq = new Rq(cmd);
+                System.out.println(rq.getActionCode());
+                System.out.println(rq.getParams());
+                  wiseSayingController.remove();
             } else if (cmd.equals("add")) {
                 wiseSayingController.add();
             } else if (cmd.equals("list")) {
