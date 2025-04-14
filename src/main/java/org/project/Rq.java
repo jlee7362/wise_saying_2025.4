@@ -24,10 +24,6 @@ public class Rq {
         String key = paramBits[0];
         String value = paramBits[1];
         params.put(key, value);
-//        System.out.println(Arrays.toString(cmdBits));
-//        System.out.println("actioncode : "+actionCode);
-//        System.out.println("key : " + key);
-//        System.out.println("value : " + value);
         // parsing end
     }
 
@@ -38,4 +34,5 @@ public class Rq {
     public String getParams(String key) {
         return params.get(key);
     }
+
 }
