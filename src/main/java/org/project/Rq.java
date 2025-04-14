@@ -30,9 +30,17 @@ public class Rq {
     public String getActionCode() {
         return actionCode;
     }
-
     public String getParams(String key) {
         return params.get(key);
     }
 
+    public int getIntParams(String key, int defaultValue) {
+        try{
+            return Integer.parseInt(getParams(key));
+        }
+        catch(NumberFormatException e){
+
+        }
+        return defaultValue;
+    }
 }
