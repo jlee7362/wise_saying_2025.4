@@ -37,14 +37,27 @@ public class WiseSayingController {
         }
     }
     public void remove(Rq rq){
-        //여기서 delete?id=1 의 1번을 찾아서 삭제한다. -> rq필요해서 인자를 받음
 
-        int id =  rq.getIntParams("id", -1);
+       int id =  rq.getIntParams("id", -1);
+
        if(id == -1){
            System.out.println("id(정수)를 제대로 입력해주세요.");
        }
-        System.out.printf("%d번 명언이 삭제 되었습니다.\n", id);
-
-
+       WiseSaying removeTargetWiseSaying = findById(id);
+       if(removeTargetWiseSaying != null){
+           wiseSayingList.remove(removeTargetWiseSaying);
+           System.out.printf("%d번 명언이 삭제 되었습니다.\n", id);
+       }
+        else{
+           System.out.printf("%d번 명언이 존재하지 않습니다.\n", id);
+       }
+    }
+    public WiseSaying findById(int id){
+        for(WiseSaying wiseSaying : wiseSayingList){
+            if (id == wiseSaying.getId()){
+               return wiseSaying;
+            }
+        }
+        return null;
     }
 }
