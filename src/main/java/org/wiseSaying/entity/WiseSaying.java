@@ -3,12 +3,12 @@ package org.wiseSaying.entity;
 public class WiseSaying {
     private int id;
     private String content;
-    private String name;
+    private String person;
 
     public WiseSaying(int id, String content, String name) {
         this.id = id;
         this.content = content;
-        this.name = name;
+        this.person = name;
     }
 
     public int getId() {
@@ -28,10 +28,10 @@ public class WiseSaying {
     }
 
     public String getName() {
-        return name;
+        return person;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.person = name;
     }
 }
