@@ -1,6 +1,5 @@
 package org.wiseSaying.service;
 
-import org.project.Rq;
 import org.wiseSaying.entity.WiseSaying;
 import org.wiseSaying.repository.WiseSayingRepository;
 
@@ -8,7 +7,6 @@ import java.util.List;
 
 public class WiseSayingService {
     int lastId = 1;
-
     WiseSayingRepository wiseSayingRepository = new WiseSayingRepository();
 
     public int add(String content, String person) {
@@ -22,6 +20,7 @@ public class WiseSayingService {
     public List<WiseSaying> getList() {
         return wiseSayingRepository.getList();
     }
+
 
     public void delete(WiseSaying removeWiseSaying) {
         wiseSayingRepository.delete(removeWiseSaying);
@@ -38,11 +37,14 @@ public class WiseSayingService {
     public WiseSaying findById(int id) {
 
         List<WiseSaying> wiseSayingList = wiseSayingRepository.getList();
-        for (WiseSaying wiseSaying : wiseSayingList){
-            if(id == wiseSaying.getId()){
+        for (WiseSaying wiseSaying : wiseSayingList) {
+            if (id == wiseSaying.getId()) {
                 return wiseSaying;
             }
         }
         return null;
     }
+
+
+
 }

@@ -15,13 +15,13 @@ public class Rq {
         actionCode = cmdBits[0];
         params = new HashMap<>();
 
-        if(cmdBits.length == 1){
+        if (cmdBits.length == 1) {
             return;
         }
 
         String[] paramBits = cmdBits[1].split("=", 2);
 
-        if(paramBits.length == 1){
+        if (paramBits.length == 1) {
             return;
         }
 
@@ -34,15 +34,15 @@ public class Rq {
     public String getActionCode() {
         return actionCode;
     }
+
     public String getParams(String key) {
         return params.get(key);
     }
 
     public int getIntParams(String key, int defaultValue) {
-        try{
+        try {
             return Integer.parseInt(getParams(key));
-        }
-        catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
 
         }
         return defaultValue;

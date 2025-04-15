@@ -20,4 +20,5 @@ public class WiseSayingRepository {
     public void delete(WiseSaying removeWiseSaying) {
         wiseSayingList.remove(removeWiseSaying);
     }
+
 }

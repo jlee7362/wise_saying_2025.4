@@ -22,13 +22,14 @@ public class WiseSayingController {
 
         int id = wiseSayingService.add(content, person);
 
+
         System.out.printf("%d번 명언이 등록되었습니다.\n", id);
     }
 
     public void list() {
         List<WiseSaying> wiseSayingList = wiseSayingService.getList();
 
-        if (wiseSayingList.size() == 0) {
+        if (wiseSayingList.isEmpty()) {
             System.out.println("등록된 명언이 없습니다.");
         } else {
             System.out.println("번호 / 인물 / 명언");
@@ -41,9 +42,7 @@ public class WiseSayingController {
     }
 
     public void delete(Rq rq) {
-
         int id = rq.getIntParams("id", -1);
-
         if (id == -1) {
             System.out.println("id(정수)를 제대로 입력해주세요.");
         } else {
@@ -60,7 +59,6 @@ public class WiseSayingController {
     }
 
     public void modify(Rq rq) {
-
         int id = rq.getIntParams("id", -1);
         if (id == -1) {
             System.out.println("id(정수)를 제대로 입력해주세요.");
@@ -82,7 +80,6 @@ public class WiseSayingController {
             } else {
                 System.out.printf("%d번 명언이 존재하지 않습니다.\n", id);
             }
-
         }
     }
 }
