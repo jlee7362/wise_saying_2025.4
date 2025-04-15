@@ -8,7 +8,8 @@ import java.util.List;
 
 public class WiseSayingController {
 
-    public WiseSayingController() {}
+    public WiseSayingController() {
+    }
 
     List<WiseSaying> wiseSayingList = new ArrayList<>();
     int lastId = 1;
@@ -24,6 +25,7 @@ public class WiseSayingController {
         wiseSayingList.add(temp);
         lastId++;
     }
+
     public void list() {
         if (wiseSayingList.size() == 0) {
             System.out.println("등록된 명언이 없습니다.");
@@ -36,28 +38,60 @@ public class WiseSayingController {
             }
         }
     }
-    public void remove(Rq rq){
 
-       int id =  rq.getIntParams("id", -1);
+    public void delete(Rq rq) {
 
-       if(id == -1){
-           System.out.println("id(정수)를 제대로 입력해주세요.");
-       }
-       WiseSaying removeTargetWiseSaying = findById(id);
-       if(removeTargetWiseSaying != null){
-           wiseSayingList.remove(removeTargetWiseSaying);
-           System.out.printf("%d번 명언이 삭제 되었습니다.\n", id);
-       }
+        int id = rq.getIntParams("id", -1);
+
+        if (id == -1) {
+            System.out.println("id(정수)를 제대로 입력해주세요.");
+        }
         else{
-           System.out.printf("%d번 명언이 존재하지 않습니다.\n", id);
-       }
+            WiseSaying removeTargetWiseSaying = findById(id);
+
+            if (removeTargetWiseSaying != null) {
+                wiseSayingList.remove(removeTargetWiseSaying);
+                System.out.printf("%d번 명언이 삭제 되었습니다.\n", id);
+            } else {
+                System.out.printf("%d번 명언이 존재하지 않습니다.\n", id);
+            }
+        }
     }
-    public WiseSaying findById(int id){
-        for(WiseSaying wiseSaying : wiseSayingList){
-            if (id == wiseSaying.getId()){
-               return wiseSaying;
+    public void modify(Rq rq) {
+
+        int id = rq.getIntParams("id", -1);
+        if (id == -1) {
+            System.out.println("id(정수)를 제대로 입력해주세요.");
+        }
+        else{
+            WiseSaying modifyWiseSaying = findById(id);
+            if(modifyWiseSaying != null){
+                System.out.println("명언(기존): " + modifyWiseSaying.getContent());
+                System.out.println("인물(기존): " + modifyWiseSaying.getName());
+
+                // 새로운 명언을 받을 명령어
+                System.out.print("명언 : ");
+                String newContent = Container.getScanner().nextLine().trim(); //새로운 내용을 입력받아 newContent라는 곳에 String으로 저장.
+                System.out.print("작가 : ");
+                String newPerson = Container.getScanner().nextLine().trim(); //새로운 내용을 입력받아 newPerson라는 곳에 String으로 저장.
+
+                modifyWiseSaying.setContent(newContent);
+                modifyWiseSaying.setName(newPerson);
+                System.out.printf("%d번 명언이 등록되었습니다.\n", modifyWiseSaying.getId());
+            }
+            else {
+                System.out.printf("%d번 명언이 존재하지 않습니다.\n", id);
+            }
+        }
+    }
+
+    public WiseSaying findById ( int id){
+        for (WiseSaying wiseSaying : wiseSayingList) {
+            if (id == wiseSaying.getId()) {
+                return wiseSaying;
             }
         }
         return null;
     }
 }
+

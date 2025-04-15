@@ -21,8 +21,11 @@ public class App {
 
             switch (rq.getActionCode()){
 
+                case "modify":
+                    wiseSayingController.modify(rq);
+                    break;
                 case "delete" :
-                    wiseSayingController.remove(rq);
+                    wiseSayingController.delete(rq);
                     break;
                 case "add" :
                     wiseSayingController.add();
